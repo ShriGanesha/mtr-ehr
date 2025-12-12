@@ -2,10 +2,12 @@
 
 **Cassandra**
 
-Create keyspace: 
+Create keyspace
+
 create keyspace if not exists ehr_db with replication = { 'class':'SimpleStrategy', 'replication_factor':1};
 
-Create Patient Table: 
+Patient Table
+
 create table if not exists patients (
 mrn_id text primary key,
 document text,
@@ -14,11 +16,21 @@ updated_at timestamp
 );
 
 
-Create Appointment Table
+Appointment Table
+
 create table if not exists appointments (
 id UUID primary key,
 mrn_id text,
-practitionerId text,
+practitioner_id text,
+document text,
+created_at timestamp,
+updated_at timestamp
+);
+
+Practitioner Table
+
+create table if not exists practitioners (
+id text primary key,
 document text,
 created_at timestamp,
 updated_at timestamp
